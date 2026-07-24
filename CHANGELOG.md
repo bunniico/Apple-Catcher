@@ -16,3 +16,4 @@ All notable changes to this project are documented in this file.
 ### Fixed
 - `applecatcher_min.basic`: title screen no longer fails to clear before gameplay starts (a `HOME` call was dropped when subroutines were merged during minification).
 - SCORE/LIVES were previously only printed inside the collision handler, so nothing displayed until the first catch or miss; both `applecatcher_src.basic` and `applecatcher_min.basic` now draw the HUD on init and reset as well.
+- The apple spawned/reset on row 1 (`AY = 1`), the same row used by the SCORE/LIVES HUD, so its `"O"` glyph could overwrite HUD text (e.g. once SCORE reached 4 digits). The apple now spawns/resets on row 2 (`AY = 2`) so its fall path never overlaps the HUD row (#3).
